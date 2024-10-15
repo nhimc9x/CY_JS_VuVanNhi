@@ -53,7 +53,7 @@ console.log(changeMatrix(matrix))
 let decription = "Tập đoàn Hyosung (Hàn Quốc) dự kiến đầu tư thêm 4 tỷ USD, nâng tổng số vốn rót vào Việt Nam lên gấp đôi. Tại cuộc gặp Thủ tướng Phạm Minh Chính chiều 14/10, ông Cho Hyun-joon, Chủ tịch Tập đoàn Hyosung (Hàn Quốc), khẳng định môi trường đầu tư của Việt Nam rất đáng tin cậy. Ông tin rằng Việt Nam sẽ trở thành trung tâm sản xuất của châu Á."
 
 const countWords = (text) => {
-  const arrOrinaal = text.split(" ")
+  const arrOrinaal = text.replace(/[@#!\,\.\{\}\[\]\(\)]/g, '').split(" ")
 
   const arrCountWord = arrOrinaal.map(word => word.length)
 
@@ -71,3 +71,79 @@ const countWords = (text) => {
 }
 
 console.log(countWords(decription))
+
+// Câu 11
+let n = 10
+let array10 = ['arr', 'arr', 'arr', 'arr', 'br']
+
+let n1 = -2
+let array11 = ['arr', 'arr', 'arr', 'arr', 'br']
+
+const counter = (start, arr) => {
+  const uniqueArr = Array.from(new Set(arr))
+
+  let separateArr = arr.reduce((acc, currentValue) => {
+    const index = uniqueArr.indexOf(currentValue)
+    if (index !== -1) acc[index].push(currentValue)
+    return acc
+  }, Array.from({ length: uniqueArr.length }, () => []))
+
+  const highestLength = separateArr.map(arr => arr.length).sort((a, b) => b - a)[0]
+
+  let resultArr = []
+
+  for (let i = start; i <= (start + highestLength); i++) {
+    resultArr.push(i)
+  }
+
+  return resultArr
+}
+
+console.log(counter(n, array10))
+console.log(counter(n1, array11))
+
+// Câu 12
+let nums1 = [1, 3]
+let nums2 = [2, 4]
+
+const totalMedian = (...args) => {
+  let mergeArr = [...args].flat(Infinity).sort((a, b) => a - b)
+
+  const middleIndex = Math.floor(mergeArr.length / 2)
+
+  if (mergeArr.length % 2 === 0) {
+    const total = mergeArr.slice(middleIndex - 1, middleIndex + 1)
+    console.log(total)
+    return (total[0] + total[1]) / 2
+  }
+
+  return mergeArr[middleIndex]
+}
+
+console.log(totalMedian(nums1, nums2))
+
+// Câu 13
+let x = 121
+let y = -121
+
+const isPalindrome = (num) => {
+  return num.toString().split("").reverse().join("") === num.toString()
+}
+
+console.log(isPalindrome(x))
+
+// Câu 14
+let strs = ["flower", "flow", "flight"]
+
+const commonPrefix = (arr) => {
+  let prefix = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    while (arr[i].indexOf(prefix) !== 0) {
+      prefix = prefix.substring(0, prefix.length - 1);
+      if (prefix === "") return "";
+    }
+  }
+  return prefix
+}
+
+console.log(commonPrefix(strs))
