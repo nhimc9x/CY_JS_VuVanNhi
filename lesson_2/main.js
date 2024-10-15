@@ -147,3 +147,29 @@ const commonPrefix = (arr) => {
 }
 
 console.log(commonPrefix(strs))
+
+// Câu 15
+
+const qs15Validation = (str) => {
+
+  const valid = {
+    ')': '(',
+    '}': '{',
+    ']': '['
+  }
+
+  const stack = str.split('').reduce((acc, char) => {
+    if (char in valid) {
+      const topElement = acc.length ? acc.pop() : '#'
+      if (valid[char] !== topElement) acc.push('invalid')
+    } else {
+      acc.push(char)
+    }
+    return acc
+  }, [])
+
+  return stack.length === 0
+
+}
+
+console.log(qs15Validation('}(/){}]'))
