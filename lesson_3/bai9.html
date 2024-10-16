@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Câu 9</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    .container {
+      width: 100%;
+      min-height: 100vh;
+      padding: 60px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .wrapper {
+      max-width: 600px;
+    }
+
+    .big-img {
+      width: 600px;
+      height: 300px;
+      margin-bottom: 20px;
+    }
+
+    .list-img {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 20px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="wrapper">
+      <div class="big-img">
+        <img src="https://s1.1zoom.me/prev/567/Sunrises_and_sunsets_Fields_Poppies_Rays_of_light_566698_600x300.jpg"
+          alt="">
+      </div>
+      <div class="list-img">
+        <img onclick="handleChange(this)"
+          src="https://s1.1zoom.me/prev/567/Sunrises_and_sunsets_Fields_Poppies_Rays_of_light_566698_600x300.jpg"
+          alt="">
+        <img onclick="handleChange(this)"
+          src="https://st5.depositphotos.com/14021298/65067/i/450/depositphotos_650675880-stock-photo-blend-gradient-bend-background-digital.jpg"
+          alt="">
+        <img onclick="handleChange(this)"
+          src="https://www.shutterstock.com/image-photo/panoramic-abstract-blue-background-product-600nw-2500946363.jpg"
+          alt="">
+        <img onclick="handleChange(this)"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIvB_X7dEnSqzvlx-JjOZj2QHITMVUH1TkhA&s" alt="">
+        <img onclick="handleChange(this)"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWVXdYfB_SJZDu36Jdmes5cxb4NxS-I1U-1g&s" alt="">
+        <img onclick="handleChange(this)"
+          src="https://free.vector6.com/wp-content/uploads/2020/12/kho056-tong-hop-vector-thiet-ke-dep.jpg" alt="">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const bigImgNode = document.querySelector('.big-img > img')
+    const handleChange = (imgNode) => {
+      bigImgNode.src = imgNode.src
+    }
+  </script>
+
+</body>
+
+</html>

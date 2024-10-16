@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Câu 1</title>
+</head>
+
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+  </ul>
+  <button onclick="handleAdd()">Add</button>
+
+  <script>
+    const handleAdd = () => {
+      const ulNode = document.querySelector('ul')
+      const newLiNode = document.createElement('li')
+      newLiNode.innerHTML = ulNode.children.length + 1
+      ulNode.appendChild(newLiNode)
+    }
+  </script>
+</body>
+
+</html>
