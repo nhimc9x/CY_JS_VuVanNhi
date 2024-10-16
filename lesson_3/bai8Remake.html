@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Câu 8</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    .container {
+      width: 100%;
+      min-height: 100vh;
+      padding: 60px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .frame {
+      width: 600px;
+      height: 300px;
+      background-color: red;
+      background: no-repeat center center;
+      background-size: cover;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .control-btn>div {
+      background: #000;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      color: white;
+      display: flex;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .prev {
+      left: 4px;
+    }
+
+    .next {
+      right: 4px;
+    }
+
+    .slider {
+      display: flex;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 1;
+      transition: .4s ease-in-out;
+    }
+
+    .slider img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slider-animation {
+      animation: slide .3s ease;
+    }
+
+    @keyframes slide {
+      0% {
+        transform: translateX(-10%);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="frame">
+      <div class="control-btn">
+        <div onclick="handlePrev()" class="prev">&lt;</div>
+      </div>
+      <div class="control-btn">
+        <div onclick="handleNext()" class="next">&gt;</div>
+      </div>
+      <div class="slider">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIvB_X7dEnSqzvlx-JjOZj2QHITMVUH1TkhA&s" alt="">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const srcImages = [
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIvB_X7dEnSqzvlx-JjOZj2QHITMVUH1TkhA&s',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWVXdYfB_SJZDu36Jdmes5cxb4NxS-I1U-1g&s',
+      'https://free.vector6.com/wp-content/uploads/2020/12/kho056-tong-hop-vector-thiet-ke-dep.jpg',
+      'https://s1.1zoom.me/prev/567/Sunrises_and_sunsets_Fields_Poppies_Rays_of_light_566698_600x300.jpg',
+      'https://i.pinimg.com/736x/bc/0c/c8/bc0cc8eec11c1cb3acb872b36396eb7c.jpg',
+      'https://s1.1zoom.me/prev/492/491302.jpg',
+    ]
+
+    const imgNode = document.querySelector('.slider > img')
+
+    let currentIndex = 0
+
+    const handlePrev = () => {
+      currentIndex === 0 ? currentIndex = (srcImages.length - 1) : currentIndex -= 1
+      imgNode.src = srcImages[currentIndex]
+    }
+
+    const handleNext = () => {
+      currentIndex === srcImages.length - 1 ? currentIndex = 0 : currentIndex += 1
+      imgNode.src = srcImages[currentIndex]
+    }
+
+  </script>
+</body>
+
+</html>
