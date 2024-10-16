@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Câu 5</title>
+</head>
+
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>10</li>
+  </ul>
+
+  <ul>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+    <li>12</li>
+  </ul>
+
+  <ul></ul>
+
+  <button onclick="handleCopy()">Copy</button>
+
+  <script>
+    const handleCopy = () => {
+      const ulNode = document.querySelectorAll('ul')
+      const arrLi1 = Array.from(ulNode[0].children).map(item => item.innerHTML)
+      const arrLi2 = Array.from(ulNode[1].children).map(item => item.innerHTML)
+
+      const merge = []
+      for (let item1 of arrLi1) {
+        for (let item2 of arrLi2) {
+          if (item1 === item2) merge.push(item2)
+        }
+      }
+
+      merge.forEach(item => {
+        const newLiNode = document.createElement('li')
+        newLiNode.innerText = item
+        ulNode[2].appendChild(newLiNode)
+      })
+
+    }
+
+  </script>
+</body>
+
+</html>
