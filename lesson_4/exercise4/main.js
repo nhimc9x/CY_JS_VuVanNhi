@@ -1,29 +1,19 @@
-const questions = [
-  { question: 'Thủ đô của Việt Nam là?', answer: 'Hà Nội' },
-  { question: 'Thủ đô của Nhật Bản là?', answer: 'Tokyo' },
-  { question: 'Thủ đô của Hàn Quốc là?', answer: 'Seoul' },
-  { question: 'Thủ đô của Trung Quốc là?', answer: 'Bắc Kinh' },
-  { question: 'Thủ đô của Indonesia là?', answer: 'Jakarta' },
-  { question: 'Thủ đô của Philippines là?', answer: 'Manila' },
-  { question: 'Thủ đô của Singapore là?', answer: 'Singapore' },
-  { question: 'Thủ đô của Malaysia là?', answer: 'Kuala Lumpur' },
-  { question: 'Thủ đô của Campuchia là?', answer: 'Phnom Penh' },
-  { question: 'Thủ đô của Lào là?', answer: 'Vientiane' },
-  { question: 'Thủ đô của Myanmar là?', answer: 'Naypyidaw' },
-  { question: 'Thủ đô của Thái Lan là?', answer: 'Bangkok' },
-  { question: 'Thủ đô của Ấn Độ là?', answer: 'New Delhi' },
-  { question: 'Thủ đô của Nepal là?', answer: 'Kathmandu' },
-  { question: 'Thủ đô của Bhutan là?', answer: 'Thimphu' },
-  { question: 'Thủ đô của Bangladesh là?', answer: 'Dhaka' },
-  { question: 'Thủ đô của Sri Lanka là?', answer: 'Colombo' },
-  { question: 'Thủ đô của Pakistan là?', answer: 'Islamabad' },
-  { question: 'Thủ đô của Afghanistan là?', answer: 'Kabul' },
-  { question: 'Thủ đô của Iran là?', answer: 'Tehran' },
-  { question: 'Thủ đô của Iraq là?', answer: 'Baghdad' },
-  { question: 'Thủ đô của Ả Rập Xê Út là?', answer: 'Riyadh' },
-  { question: 'Thủ đô của Qatar là?', answer: 'Doha' },
-  { question: 'Thủ đô của Kuwait là?', answer: 'Kuwait City' }
-]
+const str = "Thủ đô của Việt Nam là {{Hà Nội}}. Thủ đô của Nhật Bản là {{Tokyo}}. Thủ đô của Hàn Quốc là {{Seoul}}. Thủ đô của Trung Quốc là {{Bắc Kinh}}. Thủ đô của Indonesia là {{Jakarta}}. Thủ đô của Philippines là {{Manila}}. Thủ đô của Singapore là {{Singapore}}. Thủ đô của Malaysia là {{Kuala Lumpur}}. Thủ đô của Campuchia là {{Phnom Penh}}. Thủ đô của Lào là {{Vientiane}}. Thủ đô của Myanmar là {{Naypyidaw}}. Thủ đô của Thái Lan là {{Bangkok}}. Thủ đô của Ấn Độ là {{New Delhi}}. Thủ đô của Nepal là {{Kathmandu}}. Thủ đô của Bhutan là {{Thimphu}}. Thủ đô của Bangladesh là {{Dhaka}}. Thủ đô của Sri Lanka là {{Colombo}}. Thủ đô của Pakistan là {{Islamabad}}. Thủ đô của Afghanistan là {{Kabul}}. Thủ đô của Iran là {{Tehran}}. Thủ đô của Iraq là {{Baghdad}}. Thủ đô của Ả Rập Xê Út là {{Riyadh}}. Thủ đô của Qatar là {{Doha}}. Thủ đô của Kuwait là {{Kuwait City}}"
+
+function handleStr(inputString) {
+  const regex = /(.*?)\{\{(.*?)\}\}./g
+
+  const matches = [...inputString.matchAll(regex)]
+  return matches.map(item => {
+    return {
+      question: item[1],
+      answer: item[2]
+    }
+  })
+}
+
+const questions = handleStr(str)
+console.log(questions)
 
 const contentNode = document.querySelector('.content')
 
@@ -36,8 +26,8 @@ const render = () => {
         <span>${index + 1}</span>
       </div>`
   }, '')
-
   contentNode.innerHTML = htmlStr
+
 }
 render()
 

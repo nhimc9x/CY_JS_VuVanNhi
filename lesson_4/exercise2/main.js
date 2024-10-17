@@ -122,9 +122,16 @@ const renderQuestion = (questionNum) => {
     const gridResultQs = document.querySelector('.grid-result-qs')
     const resultScoreNode = document.querySelector('.result-score span')
 
-    resultQsArr.forEach((result, index) => {
-      gridResultQs.innerHTML += `<div class="${!result ? 'wrong' : ''}">${index + 1}</div>`
-    })
+    // resultQsArr.forEach((result, index) => {
+    //   gridResultQs.innerHTML += `<div class="${!result ? 'wrong' : ''}">${index + 1}</div>`
+    // })
+
+    // Tối ưu Render
+    const htmlStr = resultQsArr.reduce((acc, item, index) => {
+      return acc += `<div class="${!item ? 'wrong' : ''}">${index + 1}</div>`
+    }, '')
+    gridResultQs.innerHTML = htmlStr
+
     gridResultQs.nextElementSibling.innerText = `${resultQsArr.filter(Boolean).length} / 10`
     resultScoreNode.innerText = currentScore
     return
@@ -135,9 +142,17 @@ const renderQuestion = (questionNum) => {
   answersNode.innerHTML = ''
   scoreNode.innerText = currentScore
   questionNode.innerText = questions[questionNum].content
-  questions[questionNum].answers.forEach((answer, index) => {
-    answersNode.innerHTML += `<div class="answer" onclick="checkAnswer(${index})">${answer}</div>`
-  })
+
+  // questions[questionNum].answers.forEach((answer, index) => {
+  //   answersNode.innerHTML += `<div class="answer" onclick="checkAnswer(${index})">${answer}</div>`
+  // })
+  
+  // Tối ưu Render
+  const htmlStr = questions[questionNum].answers.reduce((acc, item, index) => {
+    return acc += `<div class="answer" onclick="checkAnswer(${index})">${item}</div>`
+  }, '')
+  answersNode.innerHTML = htmlStr
+
 }
 renderQuestion(currentQuestion)
 
