@@ -35,7 +35,7 @@ const gameOverNode = document.querySelector('.game-over')
 
 let currentQuestion = 0
 
-let currentCorrectAnswerArr = []
+let currentCorrectAnswer = ''
 
 let currentMaxShowingCharacter = 0
 
@@ -48,18 +48,25 @@ const renderQuestion = (questionNum) => {
 
   quantitySuggestNode.innerText = currentMaxShowingCharacter
 
-  const correctAnswerArr = questions[questionNum].correctAnswer.toLowerCase().split('').filter(item => item !== ' ')
+  currentCorrectAnswer = questions[questionNum].correctAnswer.toLowerCase().replace(' ', '')
 
-  currentCorrectAnswerArr = [...correctAnswerArr]
+  const correctAnswerArr = currentCorrectAnswer.split('')
 
   answerNode.innerHTML = ''
   userAnswerNode.value = ''
-  correctAnswerArr.forEach((item, index) => {
-    answerNode.innerHTML += `<div onclick="handleSugget(${index})"></div>`
-  })
 
-  console.log(correctAnswerArr)
+  // correctAnswerArr.forEach((item, index) => {
+  //   answerNode.innerHTML += `<div onclick="handleSugget(${index})"></div>`
+  // })
 
+  // Tối ưu Render
+  const htmlStr = correctAnswerArr.reduce((acc, item, index) => {
+    return acc += `<div onclick="handleSugget(${index})"></div>`
+  }, '')
+  answerNode.innerHTML = htmlStr
+
+  // console.log('acc: ', htmlStr)
+  // console.log(correctAnswerArr)
 }
 renderQuestion(currentQuestion)
 
@@ -67,22 +74,25 @@ const handleSugget = (index) => {
   if (currentMaxShowingCharacter === 0) return
   --currentMaxShowingCharacter
   quantitySuggestNode.innerText = currentMaxShowingCharacter
-  answerNode.children[index].innerText = currentCorrectAnswerArr.at(index)
+  answerNode.children[index].innerText = [...currentCorrectAnswer].at(index)
 }
 
 const handleCheck = () => {
   const userAnswer = userAnswerNode.value
   if (userAnswer.trim() === '') return
 
-  const userAnswerArr = [...userAnswer.toLowerCase()].filter(item => item !== ' ')
+  const userAnswerHandled = userAnswer.toLowerCase().replace(' ', '')
 
-  if (userAnswerArr.length == currentCorrectAnswerArr.length && userAnswerArr.every((item, index) => item === currentCorrectAnswerArr[index])) {
+  console.log(userAnswerHandled)
+  console.log(currentCorrectAnswer)
+
+  if (userAnswerHandled === currentCorrectAnswer) {
     currentQuestion++
     renderQuestion(currentQuestion)
     return
   }
 
-  currentCorrectAnswerArr.forEach((item, index) => {
+  currentCorrectAnswer.forEach((item, index) => {
     answerNode.children[index].innerText = item
   })
 
