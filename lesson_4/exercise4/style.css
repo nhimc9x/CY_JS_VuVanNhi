@@ -1,0 +1,46 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+.row {
+  display: inline-flex;
+  align-items: center;
+  margin: 4px 8px;
+  gap: 8px;
+}
+.row > input {
+  padding: 4px 6px;
+  width: max-content;
+  border-width: 2px;
+  border-style: solid;
+  border-color: blue;
+}
+.row > span {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  color: white;
+  background-color: blue;
+}
+.control button {
+  margin-top: 24px;
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}

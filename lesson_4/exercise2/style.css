@@ -1,0 +1,148 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; 
+}
+.wrapper {
+  width: 70%;
+  margin: 20px auto;
+}
+
+.wrapper .score {
+  text-align: center;
+  font-size: 30px;
+}
+
+.wrapper .question {
+  font-size: 26px;
+}
+.play-wrapper {
+  margin-top: 60px;
+}
+
+.wrapper .answers .answer {
+  float: left;
+  width: 45%;
+  text-align: center;
+  border: 1px dashed #cdcdcd;
+  box-sizing: border-box;
+  margin: 10px;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.wrapper .answers .answer:hover,
+.is-active {
+  background: coral;
+  color: white;
+}
+
+.answer.is-correct {
+  background: green !important;
+  color: white;
+}
+
+.layer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 69px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: green;
+  font-family: cursive;
+}
+
+h3 {
+  font-size: 62px;
+  color: coral;
+  text-transform: uppercase;
+  font-family: "Courier New", Courier, monospace;
+  letter-spacing: 4px;
+  text-align: center;
+  margin: 44px 0;
+}
+
+h4 {
+  text-align: center;
+  font-size: 36px;
+  font-family: monospace;
+  color: cornflowerblue;
+  margin-bottom: 40px;
+}
+.result-wrapper {
+  display: none;
+}
+.box-result {
+    padding: 40px 0;
+    border-radius: 12px;
+    background-color: aquamarine;
+    margin: 0 auto;
+}
+.box-result > p {
+  font-size: 28px;
+  font-weight: 600;
+  font-family: monospace;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.grid-result-qs {
+  display: grid;
+  width: max-content;
+  margin: 0 auto;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.grid-result-qs > div {
+  height: 60px;
+  width: 60px;
+  background-color: green;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+.wrong {
+  background-color: red !important;
+}
+.grid-result-qs + div {
+  font-size: 32px;
+  text-align: center;
+  font-weight: 700;
+  margin-top: 20px;
+  color: coral;
+  font-family: monospace;
+}
+.result-score {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 500;
+  margin-top: 32px;
+  color: darkgreen;
+  font-family: monospace;
+}
+.play-again {
+  padding: 16px 32px;
+  border-radius: 4px;
+  display: block;
+  margin: 32px auto 0;
+  width: max-content;
+  color: coral;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 20px;
+  background-color: chartreuse;
+}

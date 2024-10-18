@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    .container {
+      width: 100%;
+      min-height: 100vh;
+      padding: 60px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('https://hoanghamobile.com/tin-tuc/wp-content/uploads/2024/08/background-cong-nghe-25-1.jpg') no-repeat;
+      background-size: cover;
+    }
+
+    .box {
+      /* width: 600px;
+      height: 400px; */
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 10px;
+      padding: 20px 80px;
+      backdrop-filter: blur(6px);
+      color: turquoise;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      align-items: center;
+    }
+
+    small {
+      padding-top: 2px;
+      align-self: flex-start;
+      grid-row: 2;
+      grid-column: 2 / 4;
+      color: rgb(255, 8, 8);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    input {
+      grid-column: 2 / 4;
+      padding: 8px 12px;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.5);
+      outline: none;
+      border: none;
+      border-radius: 4px;
+      color: white;
+    }
+
+    label {
+      text-transform: uppercase;
+      font-size: 18px;
+      font-weight: 700;
+      margin-right: 16px;
+    }
+
+    button {
+      margin: 0 auto;
+      background: cyan;
+      border-radius: 6px;
+      padding: 8px 20px;
+      outline: none;
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: 500;
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="box">
+      <form id="form">
+        <h2>SIGNUP</h2>
+
+        <div class="row">
+          <label for="name">Username</label>
+          <input type="text" id="name" name="name">
+          <small></small>
+        </div>
+
+        <div class="row">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password">
+          <small></small>
+        </div>
+
+        <div class="row">
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email">
+          <small></small>
+        </div>
+
+        <div class="row">
+          <label for="name">Full Name</label>
+          <input type="text" id="fullname" name="fullname">
+          <small></small>
+        </div>
+
+        <div style="display: flex; justify-content: center">
+          <button onclick="handleSubmit()">Submit</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('form').addEventListener('submit', (e) => {
+      e.preventDefault()
+    })
+
+    const ipName = document.getElementById('name')
+    const ipPassword = document.getElementById('password')
+    const ipEmail = document.getElementById('email')
+
+    const validName = (value) => {
+      value = value.trim()
+      if (value === '') {
+        return 'Vui lòng điền trường này'
+      }
+      if (value.length < 5) {
+        return 'Vui lòng điền ít nhất 5 ký tự'
+      }
+      if (value.length > 9) {
+        return 'Tối đa 10 ký tự'
+      }
+      return ''
+    }
+
+    const validEmail = (value) => {
+      value = value.trim()
+      if (value === '') {
+        return 'Vui lòng điền trường này'
+      }
+      const regex = /\S+@\S+/;
+      if (!regex.test(value)) {
+        return 'Vui lòng điền email hợp lệ'
+      }
+      return ''
+    }
+
+    const handleSubmit = () => {
+      const validateName = validName(ipName.value)
+      const validatePassword = validName(ipPassword.value)
+      const validateEmail = validEmail(ipEmail.value)
+
+      ipName.nextElementSibling.innerText = validateName
+      ipPassword.nextElementSibling.innerText = validatePassword
+      ipEmail.nextElementSibling.innerText = validateEmail
+
+      if(!validateName && !validatePassword && !validateEmail) {
+        alert('Đăng ký thành công')
+      }
+
+    }
+
+  </script>
+</body>
+
+</html>
