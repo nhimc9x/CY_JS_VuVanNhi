@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../output.css">
+  <script src="main.js" type="text/javascript" defer></script>
+</head>
+
+<body>
+  <div class="w-full bg-gray-800 min-h-screen">
+    <div class="wrapper py-8 px-4 max-w-screen-lg mx-auto w-full">
+      <div class="bg-[#3c424a] w-full min-h-[600px] rounded-md p-8 pb-12">
+        <div class="my-4 w-full">
+          <img class="mx-auto h-20" src="https://cdn-icons-png.freepik.com/256/8476/8476658.png?semt=ais_hybrid" alt="">
+        </div>
+        <div onclick="handleAddTask()"
+          class="flex items-center cursor-pointer justify-center max-w-[400px] gap-4 mx-auto py-1 px-2 rounded-md bg-[#343a40] border border-gray-800">
+          <div class="text-[#e1eaf2] uppercase font-medium">Add a task</div>
+          <img class="w-5" src="assets/add-square-svgrepo-com.svg" alt="">
+        </div>
+
+        <div class="line w-full h-[1px] bg-[#343a40] mt-6 mb-2"></div>
+
+        <ul id="todo-list" class="max-w-[600px] mx-auto text-green-400">
+          <liv class="flex items-center gap-4 py-4 border-b border-b-[#343a40]">
+            <div class="">
+              <div class="text-lg font-semibold">Learning Java</div>
+              <div class="text-[#777e86]">Lorem ipsum, dolor sit amet consectetur adipisicing?</div>
+            </div>
+            <div class="basis-[100px] flex flex-col gap-1 text-sm">
+              <button class="py-0.5 bg-yellow-600 text-[#e1eaf2] rounded">Edit</button>
+              <button class="py-0.5 bg-red-600 text-[#e1eaf2] rounded">Delete</button>
+            </div>
+          </liv>
+        </ul>
+      </div>
+    </div>
+
+    <div id="modal" class="fixed top-0 right-0 left-0 bottom-0 bg-black/50 hidden place-content-center">
+      <div class="px-16 py-8 bg-[#e1eaf2] rounded relative">
+        <button onclick="handleClose()" class="absolute top-2 right-1 cursor-pointer">
+          <img class="w-8" src="assets/close-square-svgrepo-com.svg" alt="">
+        </button>
+        <div id="form-name" class="font-bold text-xl uppercase text-[#e55c8a] mx-auto my-4">Add new task</div>
+        <form id="add-form" class="space-y-3">
+          <div class="text-[#343a40]">
+            <label class="block font-medium pb-1" for="">Title</label>
+            <input class="rounded py-1 px-2" type="text" name="" id="">
+          </div>
+          <div class="text-[#343a40]">
+            <label class="block font-medium pb-1" for="">Decriptions</label>
+            <textarea rows="4" class="w-full rounded py-1 px-2" name="" id=""></textarea>
+          </div>
+          <button id="btn-submit" class="px-4 py-1 bg-green-600 text-[#e1eaf2] rounded">Add</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
