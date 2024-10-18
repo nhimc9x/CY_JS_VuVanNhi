@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.img-cover {
+  @apply size-full object-cover overflow-hidden;
+}
+
+.img-list {
+  @apply  w-full h-full grid grid-cols-5 gap-3;
+}
+
+/* .img-list__item {
+  @apply relative rounded overflow-hidden group cursor-pointer;
+} */
+
+.list-todo__item {
+  @apply flex items-center w-full justify-between gap-4 py-4 border-b border-b-[#343a40];
+}
+.todo-btn__control {
+  @apply py-0.5 rounded text-[#e1eaf2];
+}
