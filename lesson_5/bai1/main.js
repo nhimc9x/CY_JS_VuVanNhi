@@ -8,7 +8,7 @@ const placeholderImg = 'https://user-images.githubusercontent.com/28399150/84750
 
 inputFileNode.addEventListener('change', (e) => {
   const files = e.target.files
-  handleDisplayFile(files)
+  handleDisplayFile(files) 
 })
 
 dropAreaNode.addEventListener('dragenter', (e) => {

@@ -11,7 +11,6 @@ let currentForm = 'ADD_FORM'
 let currentIdEdit = 0
 
 const handleClose = () => {
-  console.log(1);
   modalNode.style.display = 'none'
 }
 
@@ -69,7 +68,7 @@ addFormNode.addEventListener('submit', (e) => {
   renderTodos()
 })
 
-const hanldeDelete = (id) => {
+const handleDelete = (id) => {
   data = data.filter(item => item.id !== id)
   updateMemory()
   renderTodos()
@@ -104,7 +103,7 @@ const renderTodos = () => {
             </div>
             <div class="basis-[100px] flex-shrink-0 flex flex-col gap-1 text-sm">
               <button onclick="handleEdit(${item.id})" class="bg-yellow-600 todo-btn__control">Edit</button>
-              <button onclick="hanldeDelete(${item.id})" class="bg-red-600 todo-btn__control">Delete</button>
+              <button onclick="handleDelete(${item.id})" class="bg-red-600 todo-btn__control">Delete</button>
             </div>
           </li>
     `
